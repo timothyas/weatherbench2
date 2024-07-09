@@ -40,7 +40,7 @@ def apply_time_conventions(
     assert not hasattr(
         forecast, 'time'
     ), f'Forecast should not have time dimension at this point: {forecast}'
-  else:
+  elif "lead_time" in forecast.coords:
     init_time = forecast.time - forecast.lead_time
     forecast.coords['init_time'] = init_time
   return forecast
